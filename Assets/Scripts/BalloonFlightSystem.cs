@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BalloonFlightSystem : MonoBehaviour
 {
+    private Rigidbody rigidbody;
     public float heat = 1.0f;
     public Vector2 wind = new Vector2(0, 1);
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,6 @@ public class BalloonFlightSystem : MonoBehaviour
         heat -= 0.001f;
 
         // Change position
-        this.transform.position = this.transform.position + Time.deltaTime * new Vector3(wind.x, heat, wind.y);
+        rigidbody.velocity = new Vector3(wind.x, heat, wind.y);
     }
 }

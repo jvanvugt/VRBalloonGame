@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BalloonFlightSystem : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
     private PointTracker pointTracker;
     private AudioSource destructionSound;
 

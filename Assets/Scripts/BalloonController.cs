@@ -1,23 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.InputSystem.InputAction;
 
 public class BalloonController : MonoBehaviour
 {
     private BalloonFlightSystem balloon;
+    private bool throttleActive = false;
 
     // Start is called before the first frame update
     void Start()
     {
         balloon = GetComponent<BalloonFlightSystem>();
     }
-
-    // Update is called once per framea
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (Input.GetKey("space"))
-        {
+        if (throttleActive) {
             balloon.heat += 0.01f;
         }
+    }
+
+    private void OnReset()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    private void OnThrottle()
+    {
+        throttleActive = !throttleActive;
     }
 }

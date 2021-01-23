@@ -145,6 +145,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr.oculus.standalone": {
+      "version": "2.38.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.xr.windowsmr": {
       "version": "2.5.2",
       "depth": 0,

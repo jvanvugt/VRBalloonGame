@@ -23,7 +23,7 @@ public class BalloonFlightSystem : MonoBehaviour
     void FixedUpdate()
     {
         // Reduce heat
-        heat -= 0.005f;
+        heat -= 0.001f;
 
         // Change position
         rigidbody.velocity = new Vector3(wind.x, heat, wind.y);

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BalloonFlightSystem : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
+    private PointTracker pointTracker;
+    private AudioSource destructionSound;
 
-    public AudioSource destructionSound;
     public float heat = 1.0f;
     public Vector2 wind = new Vector2(0, 1);
 
@@ -14,6 +15,7 @@ public class BalloonFlightSystem : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        pointTracker = GetComponent<PointTracker>();
         destructionSound = GetComponent<AudioSource>();
     }
 
@@ -29,6 +31,7 @@ public class BalloonFlightSystem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        pointTracker.crashed = true;
         destructionSound.Play();
     }
 }

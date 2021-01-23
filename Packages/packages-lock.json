@@ -111,7 +111,7 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.subsystemregistration": "1.0.6"
+        "com.unity.subsystemregistration": "1.0.5"
       },
       "url": "https://packages.unity.com"
     },
@@ -143,6 +143,13 @@
         "com.unity.xr.management": "3.2.16",
         "com.unity.ugui": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus.standalone": {
+      "version": "2.38.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.windowsmr": {

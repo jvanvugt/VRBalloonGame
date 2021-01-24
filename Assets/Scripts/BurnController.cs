@@ -14,21 +14,60 @@ public class BurnController : MonoBehaviour
     private bool holdingHandle = false;
 
     private bool wasBurningLastFrame = false;
-    private BalloonFlightSystem balloon;
+    private BalloonController balloon;
     public ParticleSystem firePS;
+    private UnityEngine.XR.InputDevice leftController;
+    private GameObject leftControllerGO;
+    private UnityEngine.XR.InputDevice rightController;
+    private bool lastLeftState;
+    private GameObject handleGameObject;
 
     // Start is called before the first frame update
     void Start()
     {
         startY = transform.position.y;
-        var handleGameObject = transform.Find("hori").gameObject;
-        balloon = GetComponentInParent<BalloonFlightSystem>();
+        handleGameObject = transform.Find("hori").gameObject;
+        balloon = GetComponentInParent<BalloonController>();
+
+        var leftHandedControllers = new List<UnityEngine.XR.InputDevice>();
+        var desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+        if (leftHandedControllers.Count > 0)
+        {
+            leftController = leftHandedControllers[0];
+            leftControllerGO = transform.Find("LeftController").gameObject;
+        }
+
+        var rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
+        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+        if (leftHandedControllers.Count > 0)
+        {
+            rightController = rightHandedControllers[0];
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         float newYPos;
+        bool holdingHandle = false;
+        bool triggerValue = false;
+        if (leftController != null && leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out triggerValue) && triggerValue)
+        {
+            if ((leftControllerGO.transform.position - handleGameObject.transform.position).magnitude < 0.4f)
+            {
+                holdingHandle = true;
+                newYPos = leftControllerGO.transform.position.y;
+            }
+        }
+
+        if (Input.GetKey("space"))
+        {
+            holdingHandle = true;
+            newYPos = maxY;
+        }
+
         if (holdingHandle)
         {
 
@@ -42,7 +81,7 @@ public class BurnController : MonoBehaviour
         bool shouldBurn = (newYPos - maxY) / (startY - maxY) > fireThreshold;
         if (shouldBurn)
         {
-            balloon.heat += heatSpeed * Time.deltaTime;
+            balloon.throttleActive = true;
             if (!wasBurningLastFrame)
             {
                 firePS.Play();
@@ -51,7 +90,7 @@ public class BurnController : MonoBehaviour
         }
         else
         {
-            wasBurningLastFrame = false;
+            balloon.throttleActive = false;
             if (wasBurningLastFrame)
             {
                 firePS.Stop();

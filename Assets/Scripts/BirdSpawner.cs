@@ -22,8 +22,8 @@ public class BirdSpawner : MonoBehaviour
         if ((Time.time - lastSpawnTime) * spawnRate > 1)
         {
             lastSpawnTime = Time.time;
-            var spawnPos = Random.insideUnitSphere.normalized * spawnDistance + balloon.transform.position;
-            spawnPos.y = balloon.transform.position.y;
+            var xz = Random.insideUnitCircle.normalized * spawnDistance;
+            var spawnPos = new Vector3(xz.x, 0, xz.y) + balloon.transform.position;
             Instantiate(bird, spawnPos, Quaternion.identity);
         }
     }

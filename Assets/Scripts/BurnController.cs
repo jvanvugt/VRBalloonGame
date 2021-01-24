@@ -64,7 +64,7 @@ public class BurnController : MonoBehaviour
             {
                 holdingHandle = true;
                 newYPos = transform.InverseTransformPoint(leftControllerGO.transform.position).y + handleGameObject.transform.localPosition.y;
-                debugText.SetText($"Holding, new Pos: {newYPos}. Cur Pos: {transform.localPosition.y}. Static: {handleGameObject.transform.localPosition.y}");
+                debugText.SetText($"Holding, new Pos: {newYPos}. Cur Pos: {transform.localPosition.y}");
             }
         }
 
@@ -80,7 +80,7 @@ public class BurnController : MonoBehaviour
         }
         else
         {
-            //newYPos = transform.localPosition.y + resetSpeed * Time.deltaTime;
+            newYPos = transform.localPosition.y + resetSpeed * Time.deltaTime;
         }
         newYPos = Mathf.Clamp(newYPos, maxY, startY);
 

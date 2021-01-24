@@ -19,9 +19,9 @@ public class BalloonController : MonoBehaviour
     {
         if (throttleActive) {
             balloon.heat = Mathf.Clamp(balloon.heat + 0.05f, 20, 150);
-            if (!ps.isPlaying)
+            ps.Play();
+            if (!audioSource.isPlaying)
             {
-                ps.Play();
                 audioSource.Play();
             }
         }

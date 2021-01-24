@@ -25,7 +25,7 @@ public class Crossbow : MonoBehaviour
     void Update()
     {
         bool triggerPressed;
-        if (true || (rightController != null && rightController.IsPressed(InputHelpers.Button.Trigger, out triggerPressed) && triggerPressed))
+        if (rightController != null && rightController.IsPressed(InputHelpers.Button.Trigger, out triggerPressed) && triggerPressed)
         {
             print("Key press shoot");
             if (Time.time - lastShot > cooldown)

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class BalloonFlightSystem : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class BalloonFlightSystem : MonoBehaviour
     public float coolDownSpeed = 0.01f;
 
     public bool balloonIsBroken = false;
+    private bool isResetting;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +41,7 @@ public class BalloonFlightSystem : MonoBehaviour
         if (heat > 130 || balloonIsBroken)
         {
             // Initiate crashing procedure
-            if (!balloonExplodedSound.isPlaying)
+            if (!balloonExplodedSound.isPlaying && !balloonIsBroken)
             {
                 balloonExplodedSound.Play();
             }
@@ -66,6 +69,21 @@ public class BalloonFlightSystem : MonoBehaviour
         }
     }
 
+    private IEnumerator ResetGame()
+    {
+        if (isResetting)
+        {
+            yield break;
+        }
+
+        isResetting = true;
+
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("SampleScene");
+        isResetting = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         pointTracker.crashed = true;
@@ -74,5 +92,7 @@ public class BalloonFlightSystem : MonoBehaviour
             destructionSound.Play();
         }
         warningSound.Stop();
+
+        StartCoroutine(ResetGame());
     }
 }

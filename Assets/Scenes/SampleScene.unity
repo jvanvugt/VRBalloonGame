@@ -505,8 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bird: {fileID: 359194662148928167, guid: e32051f0dfc9e05c5a782e7176180fba, type: 3}
-  spawnDistance: 50
-  spawnRate: 0.25
+  spawnDistance: 100
+  spawnRate: 0.05
 --- !u!1 &285591085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8477592808658989159, guid: a30d5672efe88ff38ab946be4aaff294,
@@ -519,6 +519,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2060716722}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1203670373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 458452862, guid: a30d5672efe88ff38ab946be4aaff294,
+    type: 3}
+  m_PrefabInstance: {fileID: 2060716722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2060716722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -526,6 +538,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1498707783, guid: a30d5672efe88ff38ab946be4aaff294, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1498707783, guid: a30d5672efe88ff38ab946be4aaff294, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -599,6 +615,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 11088_balloon_v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747992068301809153, guid: a30d5672efe88ff38ab946be4aaff294,
+        type: 3}
+      propertyPath: heatText
+      value: 
+      objectReference: {fileID: 1203670373}
+    - target: {fileID: 8747992068301809153, guid: a30d5672efe88ff38ab946be4aaff294,
+        type: 3}
+      propertyPath: coolDownSpeed
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 9146147918681877213, guid: a30d5672efe88ff38ab946be4aaff294,
         type: 3}

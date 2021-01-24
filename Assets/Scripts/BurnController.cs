@@ -60,7 +60,7 @@ public class BurnController : MonoBehaviour
             leftController.IsPressed(InputHelpers.Button.GripPressed, out gripPressedValue)) &&
             (gripValue || gripPressedValue))
         {
-            if ((leftControllerGO.transform.position - handleGameObject.transform.position).magnitude < 2f)
+            if ((leftControllerGO.transform.position - handleGameObject.transform.position).magnitude < 0.1f)
             {
                 holdingHandle = true;
                 newYPos = transform.parent.InverseTransformPoint(leftControllerGO.transform.position).y - handleGameObject.transform.localPosition.y;

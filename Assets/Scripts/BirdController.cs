@@ -43,7 +43,7 @@ public class BirdController : MonoBehaviour
             dead = true;
             foreach(var renderer in renderers)
                 renderer.enabled = false;
-            flightSystem.coolDownSpeed += 0.1f;
+            flightSystem.coolDownSpeed += 0.01f;
             particleSystem.Play();
             balloonPopSound.Play();
             Destroy(gameObject, 0.5f);

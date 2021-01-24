@@ -10,7 +10,7 @@ public class BalloonFlightSystem : MonoBehaviour
     public float heat = 60.0f;
     public Vector2 wind = new Vector2(0, 1);
     public TextMeshProUGUI heatText;
-    public float coolDownSpeed = 0.1f;
+    public float coolDownSpeed = 0.02f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,6 @@ public class BalloonFlightSystem : MonoBehaviour
         destructionSound = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Reduce heat

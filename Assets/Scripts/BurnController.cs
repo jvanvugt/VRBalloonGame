@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class BurnController : MonoBehaviour
 {
@@ -18,7 +17,6 @@ public class BurnController : MonoBehaviour
     private GameObject leftControllerGO;
 
     private GameObject handleGameObject;
-    private TextMeshProUGUI debugText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +25,6 @@ public class BurnController : MonoBehaviour
         maxY = startY - 0.25f;
         handleGameObject = transform.Find("hori").gameObject;
         balloon = GetComponentInParent<BalloonController>();
-        debugText = GameObject.Find("debugText").GetComponent<TextMeshProUGUI>();
 
         var leftHandedControllers = new List<UnityEngine.XR.InputDevice>();
         var desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left | UnityEngine.XR.InputDeviceCharacteristics.Controller;
@@ -55,7 +52,6 @@ public class BurnController : MonoBehaviour
             {
                 holdingHandle = true;
                 newYPos = transform.parent.InverseTransformPoint(leftControllerGO.transform.position).y - handleGameObject.transform.localPosition.y;
-                debugText.SetText($"Holding, new Pos: {newYPos}. Cur Pos: {transform.localPosition.y}");
             }
         }
 

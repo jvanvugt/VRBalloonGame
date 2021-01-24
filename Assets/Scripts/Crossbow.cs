@@ -9,7 +9,7 @@ public class Crossbow : MonoBehaviour
     private Rigidbody balloonrb;
     private float lastShot = 0f;
     private float cooldown = 0.5f;
-    public float shootSpeed = 30f;
+    public float shootSpeed = 70f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +27,11 @@ public class Crossbow : MonoBehaviour
         bool triggerPressed;
         if (rightController != null && rightController.IsPressed(InputHelpers.Button.Trigger, out triggerPressed) && triggerPressed)
         {
-            print("Key press shoot");
             if (Time.time - lastShot > cooldown)
             {
-                print("Making arrow");
                 lastShot = Time.time;
-                var spawnedArrow = Instantiate(arrow);
-                spawnedArrow.transform.position += transform.position;
-                spawnedArrow.transform.Rotate(transform.rotation.eulerAngles);
-                var arrowRb = spawnedArrow.GetComponent<Rigidbody>();
+                var spawnedArrow = Instantiate(arrow, transform.position, transform.rotation);
+                var arrowRb = spawnedArrow.GetComponentInChildren<Rigidbody>();
                 arrowRb.velocity = balloonrb.velocity;
                 arrowRb.velocity += transform.forward * shootSpeed;
                 print($"start velo {arrowRb.velocity}");

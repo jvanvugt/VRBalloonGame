@@ -11,7 +11,9 @@ public class BirdController : MonoBehaviour
     private BalloonFlightSystem flightSystem;
     private new Rigidbody rigidbody;
     public float speed = 10f;
-    private AudioSource balloonPopSound;
+    private AudioSource audioSource;
+    public AudioClip balloonPopSound;
+    public AudioClip birdDeadSound;
     private PointTracker pointTracker;
     public GameObject arrow;
     bool dead = false;
@@ -23,7 +25,7 @@ public class BirdController : MonoBehaviour
         renderers = GetComponentsInChildren<MeshRenderer>();
         rigidbody = GetComponent<Rigidbody>();
         flightSystem = GameObject.FindWithTag("Balloon").GetComponent<BalloonFlightSystem>();
-        balloonPopSound = GameObject.Find("balloon").GetComponent<AudioSource>();
+        audioSource = GameObject.Find("balloon").GetComponent<AudioSource>();
         pointTracker = GameObject.FindWithTag("Balloon").GetComponent<PointTracker>();
     }
 
@@ -40,15 +42,16 @@ public class BirdController : MonoBehaviour
     void OnTriggerEnter(Collider coll)
     {
         print(coll.gameObject.name);
-        if (coll.gameObject.name == "balloon")
+        if (!dead && coll.gameObject.name == "balloon")
         {
             print("bird attac");
-            pointTracker.score -= 5f;
+            pointTracker.score -= 200f;
             dead = true;
             foreach(var renderer in renderers)
                 renderer.enabled = false;
             flightSystem.coolDownSpeed += 0.0025f;
             particleSystem.Play();
+            audioSource.clip = balloonPopSound;
             balloonPopSound.Play();
             Destroy(gameObject, 0.5f);
         }
@@ -59,11 +62,13 @@ public class BirdController : MonoBehaviour
         if (col.gameObject.tag == "bullet")
         {
             print("bird is kil");
-            pointTracker.score += 10f;
+            pointTracker.score += 100f;
             dead = true;
             foreach(var renderer in renderers)
                 renderer.enabled = false;
             particleSystem.Play();
+            audioSource.clip = birdDeadSound;
+            audioSource.Play();
             Destroy(gameObject, 0.5f);
             Destroy(col.gameObject);
         }

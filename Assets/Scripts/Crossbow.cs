@@ -34,7 +34,6 @@ public class Crossbow : MonoBehaviour
                 var arrowRb = spawnedArrow.GetComponentInChildren<Rigidbody>();
                 arrowRb.velocity = balloonrb.velocity;
                 arrowRb.velocity += transform.forward * shootSpeed;
-                print($"start velo {arrowRb.velocity}");
                 Destroy(spawnedArrow, 15f);
             }
         }

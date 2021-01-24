@@ -10,6 +10,7 @@ public class BalloonFlightSystem : MonoBehaviour
     public float heat = 60.0f;
     public Vector2 wind = new Vector2(0, 1);
     public TextMeshProUGUI heatText;
+    public float coolDownSpeed = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class BalloonFlightSystem : MonoBehaviour
     void FixedUpdate()
     {
         // Reduce heat
-        heat = Mathf.Clamp(heat - 0.01f, 20, 150);
+        heat = Mathf.Clamp(heat - coolDownSpeed, 20, 150);
         heatText.SetText($"Heat: {heat:F0}°C");
 
         // Change position

@@ -64,7 +64,7 @@ public class BirdController : MonoBehaviour
                 renderer.enabled = false;
             particleSystem.Play();
             Destroy(gameObject, 0.5f);
-            Destroy(coll.gameObject);
+            Destroy(col.gameObject);
         }
     }
 }

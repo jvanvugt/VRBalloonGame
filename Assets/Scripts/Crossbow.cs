@@ -10,6 +10,7 @@ public class Crossbow : MonoBehaviour
     private float lastShot = 0f;
     private float cooldown = 0.5f;
     public float shootSpeed = 70f;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class Crossbow : MonoBehaviour
         if (rightHandedControllers.Count > 0)
             rightController = rightHandedControllers[0];
         balloonrb = GameObject.FindWithTag("Balloon").GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class Crossbow : MonoBehaviour
                 arrowRb.velocity = balloonrb.velocity;
                 arrowRb.velocity += transform.forward * shootSpeed;
                 Destroy(spawnedArrow, 10f);
+                audioSource.Play();
             }
         }
     }

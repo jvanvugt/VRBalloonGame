@@ -1104,6 +1104,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 11088_balloon_v3
       objectReference: {fileID: 0}
+    - target: {fileID: 8671407867663406680, guid: a30d5672efe88ff38ab946be4aaff294,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8747992068301809153, guid: a30d5672efe88ff38ab946be4aaff294,
         type: 3}
       propertyPath: heatText

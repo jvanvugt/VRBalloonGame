@@ -12,14 +12,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold"
-                },
-                {
-                    "name": "Throttle",
-                    "type": "Value",
-                    "id": "acea74f4-ae4e-437a-bea2-c4467251f6c7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -53,28 +45,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Reset",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3d5ae680-3a2d-4446-91bc-fe490eefb587",
-                    "path": "<XRController>{RightHand}/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "Throttle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dd880436-e0e4-4165-84d7-295cbfd142da",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Throttle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

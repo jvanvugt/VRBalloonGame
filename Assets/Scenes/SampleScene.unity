@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bird: {fileID: 359194662148928167, guid: e32051f0dfc9e05c5a782e7176180fba, type: 3}
-  spawnDistance: 100
-  spawnRate: 0.05
+  spawnDistance: 200
+  spawnRate: 0.2
 --- !u!1 &285591085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8477592808658989159, guid: a30d5672efe88ff38ab946be4aaff294,
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a638f1e4b22f0f22aaf1552f2e46e519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 651569845639219421, guid: 9465df2b6a9205c57bc790042939cbc8, type: 3}
+  arrow: {fileID: 7578787008872911912, guid: bf36a8c845edc374b9ddedcabe710f44, type: 3}
   shootSpeed: 70
 --- !u!1001 &1063569070
 PrefabInstance:

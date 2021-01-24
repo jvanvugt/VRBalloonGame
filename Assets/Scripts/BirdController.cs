@@ -13,6 +13,7 @@ public class BirdController : MonoBehaviour
     public float speed = 10f;
     private AudioSource balloonPopSound;
     private PointTracker pointTracker;
+    public GameObject arrow;
     bool dead = false;
     // Start is called before the first frame update
     void Start()
@@ -64,7 +65,7 @@ public class BirdController : MonoBehaviour
                 renderer.enabled = false;
             particleSystem.Play();
             Destroy(gameObject, 0.5f);
-            Destroy(coll.gameObject);
+            Destroy(col.gameObject);
         }
     }
 }

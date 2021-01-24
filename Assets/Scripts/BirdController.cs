@@ -51,7 +51,11 @@ public class BirdController : MonoBehaviour
             balloonPopSound.Play();
             Destroy(gameObject, 0.5f);
         }
-        else if (coll.gameObject.tag == "bullet")
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "bullet")
         {
             print("bird is kil");
             pointTracker.score += 10f;

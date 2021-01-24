@@ -10,12 +10,11 @@ public class BirdController : MonoBehaviour
     private MeshRenderer[] renderers;
     private BalloonFlightSystem flightSystem;
     private new Rigidbody rigidbody;
-    public float speed = 10f;
+    public float speed = 8f;
     private AudioSource audioSource;
     public AudioClip balloonPopSound;
     public AudioClip birdDeadSound;
     private PointTracker pointTracker;
-    public GameObject arrow;
     bool dead = false;
     // Start is called before the first frame update
     void Start()
@@ -52,7 +51,7 @@ public class BirdController : MonoBehaviour
             flightSystem.coolDownSpeed += 0.0025f;
             particleSystem.Play();
             audioSource.clip = balloonPopSound;
-            balloonPopSound.Play();
+            audioSource.Play();
             Destroy(gameObject, 0.5f);
         }
     }

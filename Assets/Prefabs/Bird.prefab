@@ -4884,7 +4884,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  arrow: {fileID: 651569845639219421, guid: 9465df2b6a9205c57bc790042939cbc8, type: 3}
+  balloonPopSound: {fileID: 8300000, guid: 95268a5c5c4bdb5d6be6521a4edbe2aa, type: 3}
+  birdDeadSound: {fileID: 8300000, guid: c735ffe57a2bc7848b5c8d5006d41475, type: 3}
+  arrow: {fileID: 4044830492347030532, guid: 39bcd9e37a0f37c478e9cc81f5679d0a, type: 3}
 --- !u!1 &359205955917148251
 GameObject:
   m_ObjectHideFlags: 0

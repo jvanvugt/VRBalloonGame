@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class BalloonFlightSystem : MonoBehaviour
 {
@@ -8,8 +7,9 @@ public class BalloonFlightSystem : MonoBehaviour
     private PointTracker pointTracker;
     private AudioSource destructionSound;
 
-    public float heat = 1.0f;
+    public float heat = 60.0f;
     public Vector2 wind = new Vector2(0, 1);
+    public TextMeshProUGUI heatText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +23,11 @@ public class BalloonFlightSystem : MonoBehaviour
     void FixedUpdate()
     {
         // Reduce heat
-        heat -= 0.001f;
+        heat = Mathf.Clamp(heat - 0.01f, 20, 150);
+        heatText.SetText($"Heat: {heat:F0}°C");
 
         // Change position
-        rigidbody.velocity = new Vector3(wind.x, heat, wind.y);
+        rigidbody.velocity = new Vector3(wind.x, (heat - 60) / 50, wind.y);
     }
 
     private void OnCollisionEnter(Collision collision)

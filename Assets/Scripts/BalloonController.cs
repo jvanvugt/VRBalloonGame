@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.InputSystem.InputAction;
 
 public class BalloonController : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class BalloonController : MonoBehaviour
     private void FixedUpdate()
     {
         if (throttleActive) {
-            balloon.heat += 0.01f;
+            balloon.heat = Mathf.Clamp(balloon.heat + 0.05f, 20, 150);
         }
     }
 

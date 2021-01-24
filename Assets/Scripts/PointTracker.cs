@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class PointTracker : MonoBehaviour
 {
-    public long score;
+    public float score;
     public bool crashed = false;
+    public TextMeshProUGUI scoreText;
+
+    private Vector3 previousPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        previousPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -18,7 +20,10 @@ public class PointTracker : MonoBehaviour
     {
         if (!crashed)
         {
-            score += 1;
+            score += Mathf.Abs(transform.position.x - previousPosition.x) + Mathf.Abs(transform.position.z - previousPosition.z);
+            previousPosition = transform.position;
         }
+
+        scoreText.SetText($"Score: {score:F0}");
     }
 }

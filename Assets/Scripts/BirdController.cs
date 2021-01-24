@@ -10,7 +10,7 @@ public class BirdController : MonoBehaviour
     private MeshRenderer[] renderers;
     private BalloonFlightSystem flightSystem;
     private new Rigidbody rigidbody;
-    public float speed = 10f;
+    public float speed = 8f;
     private AudioSource balloonPopSound;
     private PointTracker pointTracker;
     public GameObject arrow;

@@ -12,7 +12,7 @@ public class BalloonController : MonoBehaviour
     void Start()
     {
         balloon = GetComponent<BalloonFlightSystem>();
-        ps = GetComponentInChildren<ParticleSystem>();
+        ps = GameObject.Find("Fire Parts").GetComponent<ParticleSystem>();
         audioSource = ps.gameObject.GetComponent<AudioSource>();
     }
     private void FixedUpdate()

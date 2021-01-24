@@ -6,10 +6,10 @@ public class BirdController : MonoBehaviour
 {
 
     private GameObject balloon;
-    private ParticleSystem particleSystem;
+    private new ParticleSystem particleSystem;
     private MeshRenderer[] renderers;
     private BalloonFlightSystem flightSystem;
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
     public float speed = 10f;
     private AudioSource balloonPopSound;
     private PointTracker pointTracker;
@@ -46,7 +46,7 @@ public class BirdController : MonoBehaviour
             dead = true;
             foreach(var renderer in renderers)
                 renderer.enabled = false;
-            flightSystem.coolDownSpeed += 0.01f;
+            flightSystem.coolDownSpeed += 0.0025f;
             particleSystem.Play();
             balloonPopSound.Play();
             Destroy(gameObject, 0.5f);

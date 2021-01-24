@@ -86,13 +86,16 @@ public class BalloonFlightSystem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        pointTracker.crashed = true;
-        if (!destructionSound.isPlaying)
+        if (collision.gameObject.tag == "Terrain")
         {
-            destructionSound.Play();
-        }
-        warningSound.Stop();
+            pointTracker.crashed = true;
+            if (!destructionSound.isPlaying)
+            {
+                destructionSound.Play();
+            }
+            warningSound.Stop();
 
-        StartCoroutine(ResetGame());
+            StartCoroutine(ResetGame());
+        }
     }
 }

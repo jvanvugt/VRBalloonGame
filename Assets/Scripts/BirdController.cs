@@ -21,7 +21,7 @@ public class BirdController : MonoBehaviour
         renderers = GetComponentsInChildren<MeshRenderer>();
         rigidbody = GetComponent<Rigidbody>();
         flightSystem = GameObject.FindWithTag("Balloon").GetComponent<BalloonFlightSystem>();
-        balloonPopSound = GameObject.Find("Balloon").GetComponent<AudioSource>();
+        balloonPopSound = GameObject.Find("balloon").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

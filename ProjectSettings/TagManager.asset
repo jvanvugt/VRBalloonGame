@@ -7,6 +7,7 @@ TagManager:
   - Balloon
   - Bird
   - Mand
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - Bird
   - Balloon
-  - 
+  - Bullet
   - 
   - 
   - 

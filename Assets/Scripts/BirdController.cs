@@ -12,6 +12,7 @@ public class BirdController : MonoBehaviour
     private Rigidbody rigidbody;
     public float speed = 10f;
     private AudioSource balloonPopSound;
+    private PointTracker pointTracker;
     bool dead = false;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class BirdController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         flightSystem = GameObject.FindWithTag("Balloon").GetComponent<BalloonFlightSystem>();
         balloonPopSound = GameObject.Find("balloon").GetComponent<AudioSource>();
+        pointTracker = GameObject.FindWithTag("Balloon").GetComponent<PointTracker>();
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class BirdController : MonoBehaviour
         if (coll.gameObject.name == "balloon")
         {
             print("bird attac");
+            pointTracker.score -= 5f;
             dead = true;
             foreach(var renderer in renderers)
                 renderer.enabled = false;
@@ -51,11 +54,13 @@ public class BirdController : MonoBehaviour
         else if (coll.gameObject.tag == "bullet")
         {
             print("bird is kil");
+            pointTracker.score += 10f;
             dead = true;
             foreach(var renderer in renderers)
                 renderer.enabled = false;
             particleSystem.Play();
             Destroy(gameObject, 0.5f);
+            Destroy(coll.gameObject);
         }
     }
 }

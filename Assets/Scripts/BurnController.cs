@@ -16,7 +16,7 @@ public class BurnController : MonoBehaviour
     private BalloonController balloon;
     private UnityEngine.XR.InputDevice leftController;
     private GameObject leftControllerGO;
-    private UnityEngine.XR.InputDevice rightController;
+
     private GameObject handleGameObject;
     private TextMeshProUGUI debugText;
 
@@ -28,7 +28,6 @@ public class BurnController : MonoBehaviour
         handleGameObject = transform.Find("hori").gameObject;
         balloon = GetComponentInParent<BalloonController>();
         debugText = GameObject.Find("debugText").GetComponent<TextMeshProUGUI>();
-        Debug.Log(debugText);
 
         var leftHandedControllers = new List<UnityEngine.XR.InputDevice>();
         var desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left | UnityEngine.XR.InputDeviceCharacteristics.Controller;
@@ -37,14 +36,6 @@ public class BurnController : MonoBehaviour
         {
             leftController = leftHandedControllers[0];
             leftControllerGO = GameObject.Find("LeftController");
-        }
-
-        var rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
-        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
-        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
-        if (leftHandedControllers.Count > 0)
-        {
-            rightController = rightHandedControllers[0];
         }
     }
 
@@ -83,8 +74,6 @@ public class BurnController : MonoBehaviour
             newYPos = transform.localPosition.y + resetSpeed * Time.deltaTime;
         }
         newYPos = Mathf.Clamp(newYPos, maxY, startY);
-
-        Debug.Log(newYPos);
 
         transform.localPosition = new Vector3(transform.localPosition.x, newYPos, transform.localPosition.z);
         bool shouldBurn = (newYPos - maxY) / (startY - maxY) < fireThreshold;

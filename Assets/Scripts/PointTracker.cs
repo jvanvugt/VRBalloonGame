@@ -20,7 +20,7 @@ public class PointTracker : MonoBehaviour
     {
         if (!crashed)
         {
-            score += Mathf.Abs(transform.position.x - previousPosition.x) + Mathf.Abs(transform.position.z - previousPosition.z);
+            score += Mathf.Sqrt(Mathf.Pow(transform.position.x - previousPosition.x, 2) + Mathf.Pow(transform.position.z - previousPosition.z, 2));
             previousPosition = transform.position;
         }
 

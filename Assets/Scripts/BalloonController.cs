@@ -6,12 +6,14 @@ public class BalloonController : MonoBehaviour
     private BalloonFlightSystem balloon;
     public bool throttleActive = false;
     private ParticleSystem ps;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         balloon = GetComponent<BalloonFlightSystem>();
         ps = GetComponentInChildren<ParticleSystem>();
+        audioSource = ps.gameObject.GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {
@@ -20,11 +22,13 @@ public class BalloonController : MonoBehaviour
             if (!ps.isPlaying)
             {
                 ps.Play();
+                audioSource.Play();
             }
         }
         else
         {
             ps.Stop();
+            audioSource.Stop();
         }
 
     }
